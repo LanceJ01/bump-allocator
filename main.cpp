@@ -17,6 +17,13 @@ public:
             return ptr;
         }
     }
+
+    BumpAllocator(size_t size) {
+        buffer = new char[size];
+        capacity = size;
+        offset = 0;
+    }
+    ~BumpAllocator() { delete[] buffer; }
 };
 
 int main() {
